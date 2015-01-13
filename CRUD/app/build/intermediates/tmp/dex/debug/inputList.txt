@@ -1,0 +1,5 @@
+C:\Users\Niar\AndroidstudioProjects\CRUD\app\build\intermediates\classes\debug
+C:\Users\Niar\AndroidstudioProjects\CRUD\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.0-f8c821fd8ddeb1ff4be0b3be72ccac25a4239f0c.jar
+C:\Users\Niar\AndroidstudioProjects\CRUD\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.0-7d54e5f18fc4ef8eaf59e91b35828d3ebf5bca91.jar
+C:\Users\Niar\AndroidstudioProjects\CRUD\app\build\intermediates\pre-dexed\debug\classes-691a8af3098861901f5ca389ebe5738c0d360a2a.jar
+C:\Users\Niar\AndroidstudioProjects\CRUD\app\build\intermediates\pre-dexed\debug\classes-84fc496349248e1f0031d5904f68a8ee87c10d55.jar
