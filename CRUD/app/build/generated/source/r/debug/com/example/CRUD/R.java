@@ -1306,9 +1306,8 @@ containing a value of this type.
         public static final int ic_launcher=0x7f020034;
     }
     public static final class id {
-        public static final int MnuOpc1=0x7f08004d;
-        public static final int MnuOpc2=0x7f08004e;
-        public static final int MnuOpc3=0x7f08004f;
+        public static final int MnuOpc1=0x7f080050;
+        public static final int MnuOpc2=0x7f080051;
         public static final int action_bar=0x7f080033;
         public static final int action_bar_activity_content=0x7f080000;
         public static final int action_bar_container=0x7f080032;
@@ -1326,8 +1325,8 @@ containing a value of this type.
         public static final int always=0x7f080016;
         public static final int beginning=0x7f080013;
         public static final int bottom=0x7f08001e;
-        public static final int btnCancel=0x7f080048;
-        public static final int btnOK=0x7f080047;
+        public static final int btnCancel=0x7f080049;
+        public static final int btnOK=0x7f080048;
         public static final int checkbox=0x7f08002b;
         public static final int collapseActionView=0x7f080017;
         public static final int decor_content_parent=0x7f080031;
@@ -1347,18 +1346,21 @@ containing a value of this type.
         public static final int icon=0x7f080028;
         public static final int ifRoom=0x7f080018;
         public static final int image=0x7f080025;
-        public static final int list=0x7f080049;
+        public static final int list=0x7f08004b;
         public static final int listMode=0x7f080009;
         public static final int list_item=0x7f080027;
         public static final int middle=0x7f080015;
-        public static final int name=0x7f08004a;
+        public static final int name=0x7f08004c;
         public static final int never=0x7f080019;
         public static final int none=0x7f08000e;
         public static final int normal=0x7f08000a;
-        public static final int price=0x7f08004b;
+        public static final int price=0x7f08004d;
         public static final int progress_circular=0x7f080005;
         public static final int progress_horizontal=0x7f080006;
         public static final int radio=0x7f08002d;
+        public static final int ratingBar=0x7f08004f;
+        public static final int ratingBar2=0x7f080047;
+        public static final int ratingBar3=0x7f08004a;
         public static final int search_badge=0x7f080037;
         public static final int search_bar=0x7f080036;
         public static final int search_button=0x7f080038;
@@ -1382,7 +1384,7 @@ containing a value of this type.
         public static final int txtPrice=0x7f080043;
         public static final int txtUrl=0x7f080045;
         public static final int up=0x7f080008;
-        public static final int url=0x7f08004c;
+        public static final int url=0x7f08004e;
         public static final int useLogo=0x7f080012;
         public static final int withText=0x7f08001a;
         public static final int wrap_content=0x7f08001d;

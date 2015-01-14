@@ -4,12 +4,14 @@ import java.io.Serializable;
 
 public class Item implements Serializable {
 	private String name, price, url;
+    private float rating;
 	
 	
-	public Item(String name, String price, String url) {
+	public Item(String name, String price, String url, float rating) {
 		this.name = name;
 		this.price = price;
 		this.url = url;
+        this.rating = rating;
 	}
 
 	public String getName() {
@@ -35,5 +37,13 @@ public class Item implements Serializable {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+
+    public void setRating(float value) {
+        rating = value;
+    }
+
+    public float getRating() {
+        return rating;
+    }
 	
 }

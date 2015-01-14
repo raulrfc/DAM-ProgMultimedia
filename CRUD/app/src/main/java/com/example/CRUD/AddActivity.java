@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RatingBar;
 
 public class AddActivity extends ActionBarActivity implements View.OnClickListener {
 
@@ -34,10 +35,12 @@ public class AddActivity extends ActionBarActivity implements View.OnClickListen
                 EditText name = (EditText) findViewById(R.id.editName);
                 EditText price = (EditText) findViewById(R.id.editPrice);
                 EditText url = (EditText) findViewById(R.id.editUrl);
+                RatingBar rb = (RatingBar) findViewById(R.id.ratingBar2);
 
                 data.putExtra("name", name.getText().toString());
                 data.putExtra("price", price.getText().toString());
                 data.putExtra("url", url.getText().toString());
+                data.putExtra("rating", rb.getRating());
 
                 setResult(RESULT_OK, data);
                 finish();

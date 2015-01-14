@@ -63,29 +63,33 @@
         android:editable="true"
         android:enabled="true" />
 
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ratingBar3"
+        android:layout_weight="0.00"
+        android:numStars="5" />
+
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.04">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <Button
-            android:layout_width="180dp"
-            android:layout_height="match_parent"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
             android:text="@string/aceptar"
             android:id="@+id/btnOK"
-            android:layout_weight="0.05"
             android:textColor="#10bcc9"
             android:outlineProvider="bounds"
             android:singleLine="false"
             android:background="@drawable/buttonshape" />
 
         <Button
-            android:layout_width="180dp"
-            android:layout_height="match_parent"
+            android:layout_width="192dp"
+            android:layout_height="wrap_content"
             android:text="@string/cancelar"
             android:id="@+id/btnCancel"
-            android:layout_weight="0.05"
             android:textColor="#10bcc9"
             android:singleLine="false"
             android:background="@drawable/buttonshape" />

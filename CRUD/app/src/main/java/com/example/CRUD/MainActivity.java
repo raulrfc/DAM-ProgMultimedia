@@ -11,7 +11,11 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import android.app.Activity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,6 +31,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 
@@ -35,7 +40,7 @@ public class MainActivity extends ActionBarActivity {
     Item item;
     ArrayList<Item> items = new ArrayList<>();
     ListView lv;
-    private CustomAdapter adapter;
+    CustomAdapter adapter;
     String filename = "wishlist.txt";
 
 
@@ -45,7 +50,6 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         loadItems();
-        //rellenarItems();
 
         adapter = new CustomAdapter(this);
         lv = (ListView)findViewById(R.id.list);
@@ -60,6 +64,8 @@ public class MainActivity extends ActionBarActivity {
         });
     }
 
+
+    /////////////////////// MÉTODOS AUXILIARES \\\\\\\\\\\\\\\\\\\\\\\\\
     private void openURL(int position) {
         String url = items.get(position).getUrl();
         url = checkURL(url);
@@ -74,8 +80,8 @@ public class MainActivity extends ActionBarActivity {
         return url;
     }
 
+    //////////////////// ADAPTADOR \\\\\\\\\\\\\\\\\\\\\
     class CustomAdapter extends ArrayAdapter<Item> {
-
         Activity context;
         ArrayList<Item> arrayItems;
 
@@ -95,8 +101,8 @@ public class MainActivity extends ActionBarActivity {
             TextView lblPrice = (TextView)item.findViewById(R.id.price);
             lblPrice.setText(items.get(position).getPrice());
 
-            TextView lblUrl = (TextView)item.findViewById(R.id.url);
-            lblUrl.setText(items.get(position).getUrl());
+            RatingBar rb = (RatingBar)item.findViewById(R.id.ratingBar);
+            rb.setRating(items.get(position).getRating());
 
             return(item);
         }
@@ -114,6 +120,7 @@ public class MainActivity extends ActionBarActivity {
             arrayItems.get(position).setName(item.getName());
             arrayItems.get(position).setUrl(item.getUrl());
             arrayItems.get(position).setPrice(item.getPrice());
+            arrayItems.get(position).setRating(item.getRating());
         }
     } // FIN DE CUSTOM ADAPTER
 
@@ -134,13 +141,9 @@ public class MainActivity extends ActionBarActivity {
                 startActivityForResult(new Intent("ADD"), 1);
                 return true;
             case R.id.MnuOpc2:
-
-                return true;
-            case R.id.MnuOpc3:
                 saveItems(items);
                 finish();
                 return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -155,7 +158,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        final AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 
         switch(item.getItemId()){
             case 1: // Ver
@@ -170,22 +173,24 @@ public class MainActivity extends ActionBarActivity {
                 startActivityForResult(intent, 2);
                 return true;
             case 3: // Eliminar
-                adapter.deleteItem(items.get(info.position));
+                new AlertDialog.Builder(this)
+                        .setTitle("Eliminar")
+                        .setMessage("Estás seguro de eliminar esta entrada?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                adapter.deleteItem(items.get(info.position));
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
                 return true;
             default:
                 return super.onContextItemSelected(item);
         }
-    }
-
-    private void rellenarItems() {
-        Item c1 = new Item("Numb", "Linkin Park", "3:48");
-        Item c2 = new Item("Nothing Else Matters", "Metallica", "5:23");
-        Item c3 = new Item("Jump", "Van Halen", "3:35");
-
-        items.add(c1);
-        items.add(c2);
-        items.add(c3);
-
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -194,10 +199,12 @@ public class MainActivity extends ActionBarActivity {
                 String name = data.getStringExtra("name");
                 String price = data.getStringExtra("price");
                 String url = data.getStringExtra("url");
+                Float rating = data.getFloatExtra("rating", 0);
 
-                item = new Item(name, price, url);
+                item = new Item(name, price, url, rating);
                 adapter.addItem(item);
                 adapter.notifyDataSetChanged();
+
                 saveItems(items);
             }
         }
@@ -210,17 +217,14 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-
+    ////////////////// MANEJO FICHEROS \\\\\\\\\\\\\\\\\\\\\\\\\
     public void loadItems() {
         ObjectInputStream input = null;
 
         try {
-
             input = new ObjectInputStream(new FileInputStream(new File(getFilesDir(),"") + File.separator+filename));
             items = (ArrayList<Item>) input.readObject();
             input.close();
-
-
         } catch (IOException ioe){
             ioe.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -233,14 +237,10 @@ public class MainActivity extends ActionBarActivity {
 
         try {
             out = new ObjectOutputStream(new FileOutputStream(new File(getFilesDir(),"") + File.separator+filename));
-
-
             out.writeObject(items);
             out.close();
-
         } catch (IOException ioe){
             ioe.printStackTrace();
         }
-
     }
 }
