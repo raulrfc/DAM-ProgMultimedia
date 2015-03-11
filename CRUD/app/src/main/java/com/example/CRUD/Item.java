@@ -3,16 +3,34 @@ package com.example.CRUD;
 import java.io.Serializable;
 
 public class Item implements Serializable {
+    private int id;
 	private String name, price, url;
     private float rating;
 	
-	
-	public Item(String name, String price, String url, float rating) {
+	public Item () {}
+
+	public Item(int id, String name, String price, String url, float rating) {
+        this.id = id;
 		this.name = name;
 		this.price = price;
 		this.url = url;
         this.rating = rating;
 	}
+
+    public Item(String name, String price, String url, float rating) {
+        this.name = name;
+        this.price = price;
+        this.url = url;
+        this.rating = rating;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
 	public String getName() {
 		return name;

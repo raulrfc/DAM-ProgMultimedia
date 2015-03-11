@@ -1308,6 +1308,9 @@ containing a value of this type.
     public static final class id {
         public static final int MnuOpc1=0x7f080050;
         public static final int MnuOpc2=0x7f080051;
+        public static final int MnuOpc3=0x7f080052;
+        public static final int MnuOpc4=0x7f080053;
+        public static final int MnuOpc5=0x7f080054;
         public static final int action_bar=0x7f080033;
         public static final int action_bar_activity_content=0x7f080000;
         public static final int action_bar_container=0x7f080032;

@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+	<item
+        android:id="@+id/MnuOpc1"
+        android:title="@string/agregar"
+        app:showAsAction="ifRoom"
+	    android:icon="@android:drawable/ic_menu_add"/>
+
+	<item android:id="@+id/MnuOpc2"
+        android:title="@string/salir"
+	    android:icon="@android:drawable/ic_menu_agenda"/>
+
+</menu><!-- From: file:/C:/Users/Niar/AndroidstudioProjects/CRUD/app/src/main/res/menu/main.xml -->

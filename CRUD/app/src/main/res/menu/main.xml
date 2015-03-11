@@ -6,7 +6,19 @@
         app:showAsAction="ifRoom"
 	    android:icon="@android:drawable/ic_menu_add"/>
 
-	<item android:id="@+id/MnuOpc2"
+    <item android:id="@+id/MnuOpc2"
+        android:title="Leer XML SAX"
+        android:icon="@android:drawable/ic_menu_agenda"/>
+
+    <item android:id="@+id/MnuOpc3"
+        android:title="Leer XML DOM"
+        android:icon="@android:drawable/ic_menu_agenda"/>
+
+    <item android:id="@+id/MnuOpc4"
+        android:title="Generar XML"
+        android:icon="@android:drawable/ic_menu_agenda"/>
+
+	<item android:id="@+id/MnuOpc5"
         android:title="@string/salir"
 	    android:icon="@android:drawable/ic_menu_agenda"/>
 

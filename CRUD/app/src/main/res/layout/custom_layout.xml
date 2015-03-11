@@ -48,6 +48,6 @@
         android:id="@+id/ratingBar"
         style="?android:attr/ratingBarStyleSmall"
         android:layout_centerVertical="true"
-        android:layout_toStartOf="@+id/url" />
+        android:layout_toLeftOf="@+id/url" />
 
 </RelativeLayout>

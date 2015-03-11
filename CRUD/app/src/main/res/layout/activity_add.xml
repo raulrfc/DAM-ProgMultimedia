@@ -76,23 +76,25 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:layout_width="190dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/aceptar"
             android:id="@+id/btnOK"
             android:textColor="#10bcc9"
             android:outlineProvider="bounds"
             android:singleLine="false"
-            android:background="@drawable/buttonshape" />
+            android:background="@drawable/buttonshape"
+            android:layout_weight="1" />
 
         <Button
-            android:layout_width="192dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/cancelar"
             android:id="@+id/btnCancel"
             android:textColor="#10bcc9"
             android:singleLine="false"
-            android:background="@drawable/buttonshape" />
+            android:background="@drawable/buttonshape"
+            android:layout_weight="1" />
     </LinearLayout>
 
 </LinearLayout>

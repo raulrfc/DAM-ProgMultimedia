@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="#ff425fad">
+
+    <TextView
+        android:layout_width="279dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/nombre"
+        android:id="@+id/txtName"
+        android:textColor="#10bcc9"
+        android:textStyle="bold"
+        android:layout_weight="0.04"
+        android:textSize="15sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editName"
+        android:layout_weight="0.05"
+        android:editable="true"
+        android:enabled="true" />
+
+    <TextView
+        android:layout_width="279dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/precio"
+        android:id="@+id/txtPrice"
+        android:textColor="#10bcc9"
+        android:textStyle="bold"
+        android:layout_weight="0.04"
+        android:textSize="15sp"
+        android:singleLine="false" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editPrice"
+        android:layout_weight="0.05"
+        android:editable="true"
+        android:enabled="true" />
+
+    <TextView
+        android:layout_width="279dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/url"
+        android:id="@+id/txtUrl"
+        android:textColor="#10bcc9"
+        android:textStyle="bold"
+        android:layout_weight="0.04"
+        android:textSize="15sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editUrl"
+        android:layout_weight="0.05"
+        android:editable="true"
+        android:enabled="true" />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ratingBar2"
+        android:layout_weight="0.00"
+        android:numStars="5" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:text="@string/aceptar"
+            android:id="@+id/btnOK"
+            android:textColor="#10bcc9"
+            android:outlineProvider="bounds"
+            android:singleLine="false"
+            android:background="@drawable/buttonshape" />
+
+        <Button
+            android:layout_width="192dp"
+            android:layout_height="wrap_content"
+            android:text="@string/cancelar"
+            android:id="@+id/btnCancel"
+            android:textColor="#10bcc9"
+            android:singleLine="false"
+            android:background="@drawable/buttonshape" />
+    </LinearLayout>
+
+</LinearLayout><!-- From: file:/C:/Users/Niar/AndroidstudioProjects/CRUD/app/src/main/res/layout/activity_add.xml -->

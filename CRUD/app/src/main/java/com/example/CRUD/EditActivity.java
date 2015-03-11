@@ -14,6 +14,7 @@ public class EditActivity extends ActionBarActivity implements View.OnClickListe
     Button accept, cancel;
     Item item;
     int pos;
+    String oldurl;
     private EditText name;
     private EditText price;
     private EditText url;
@@ -26,6 +27,7 @@ public class EditActivity extends ActionBarActivity implements View.OnClickListe
 
         item = (Item) getIntent().getSerializableExtra("item");
         pos = getIntent().getIntExtra("pos", 0);
+        oldurl = getIntent().getStringExtra("url");
 
         name = (EditText) findViewById(R.id.editName);
         price = (EditText) findViewById(R.id.editPrice);
@@ -59,6 +61,7 @@ public class EditActivity extends ActionBarActivity implements View.OnClickListe
 
                 data.putExtra("item", item);
                 data.putExtra("pos", pos);
+                data.putExtra("oldurl", oldurl);
 
                 setResult(RESULT_OK, data);
                 finish();

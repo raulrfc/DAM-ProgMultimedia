@@ -337,6 +337,9 @@ int drawable buttonshape 0x7f020033
 int drawable ic_launcher 0x7f020034
 int id MnuOpc1 0x7f080050
 int id MnuOpc2 0x7f080051
+int id MnuOpc3 0x7f080052
+int id MnuOpc4 0x7f080053
+int id MnuOpc5 0x7f080054
 int id action_bar 0x7f080033
 int id action_bar_activity_content 0x7f080000
 int id action_bar_container 0x7f080032
