@@ -24,6 +24,17 @@ public class Item implements Serializable {
         this.rating = rating;
     }
 
+    public boolean equals(Item i) {
+        boolean check;
+
+        if (this.getName().equals(i.getName()) & this.getPrice().equals(i.getPrice()) & this.getUrl().equals(i.getUrl()) & this.getRating() == i.getRating()) {
+            check = true;
+        }else {
+            check = false;
+        }
+        return check;
+    }
+
     public int getId() {
         return id;
     }

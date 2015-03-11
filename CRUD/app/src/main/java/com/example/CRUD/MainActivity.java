@@ -50,6 +50,7 @@ public class MainActivity extends ActionBarActivity {
     //////////////// VARIABLES \\\\\\\\\\\\\\\\
     Item item;
     ArrayList<Item> items = new ArrayList<>();
+    ArrayList<Item> itemList = new ArrayList<>();
     ListView lv;
     CustomAdapter adapter;
     SQLHelper sqlh = new SQLHelper(this, null,1);
@@ -61,9 +62,12 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        db = sqlh.getWritableDatabase();
 
+        db = sqlh.getWritableDatabase();
         fillWishes();
+        LoadAllWishes loadAllWishes = new LoadAllWishes();
+        loadAllWishes.execute();
+
         loadListView();
     }
 
@@ -120,6 +124,43 @@ public class MainActivity extends ActionBarActivity {
                 // Do nothing.
             }
         }).show();
+    }
+
+    public void SyncInsert() {
+        boolean check;
+
+        for (int i = 0; i < itemList.size(); i++) {
+            check = false;
+            for (int j = 0; j < items.size(); j++) {
+                if (!itemList.get(i).equals(items.get(j))) {
+                    check = false;
+                } else {
+                    check = true;
+                    break;
+                }
+            }
+            if (!check) {
+                sqlh.insertWish(db, itemList.get(i).getName(), itemList.get(i).getPrice(), itemList.get(i).getUrl(), itemList.get(i).getRating());
+            }
+        }
+    }
+
+    public void SyncDelete() {
+        boolean check;
+        for (int i = 0; i < items.size(); i++) {
+            check = false;
+            for (int j = 0; j < itemList.size(); j++) {
+                if (!items.get(i).equals(itemList.get(j))) {
+                    check = false;
+                } else {
+                    check = true;
+                    break;
+                }
+            }
+            if (!check) {
+                sqlh.deleteWish(db, items.get(i).getId());
+            }
+        }
     }
 
     //////////////////// ADAPTADOR \\\\\\\\\\\\\\\\\\\\\
@@ -308,17 +349,15 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-    class LoadAllProducts extends AsyncTask<String, String, String> {
+    class LoadAllWishes extends AsyncTask<String, String, String> {
         JSONParser jParser = new JSONParser();
-
-        ArrayList<Item> itemList;
 
         // url to get all products list
         private String url_all_wishes = "http://10.0.2.2/android_connect/get_all_wishes.php";
 
         // JSON Node names
         private static final String TAG_SUCCESS = "success";
-        private static final String TAG_WISHES = "wish";
+        private static final String TAG_WISHES = "wishes";
         private static final String TAG_ID = "ID";
         private static final String TAG_NOMBRE = "Nombre";
         private static final String TAG_PRECIO = "Precio";
@@ -372,22 +411,10 @@ public class MainActivity extends ActionBarActivity {
             return null;
         }
 
-        /**
-         * After completing background task Dismiss the progress dialog
-         * *
-         */
+
         protected void onPostExecute(String file_url) {
-
-            // updating UI from Background Thread
-            runOnUiThread(new Runnable() {
-                public void run() {
-                    /**
-                     * Updating parsed JSON data into ListView
-                     * */
-
-                }
-            });
-
+            SyncInsert();
+            SyncDelete();
         }
     }
 

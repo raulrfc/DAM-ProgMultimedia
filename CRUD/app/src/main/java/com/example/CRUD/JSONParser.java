@@ -12,6 +12,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,6 +28,7 @@ public class JSONParser {
     static InputStream is = null;
     static JSONObject jObj = null;
     static String json = "";
+    private HttpEntity httpEntity;
 
     // constructor
     public JSONParser() {
@@ -61,8 +63,8 @@ public class JSONParser {
                 HttpGet httpGet = new HttpGet(url);
 
                 HttpResponse httpResponse = httpClient.execute(httpGet);
-                HttpEntity httpEntity = httpResponse.getEntity();
-                is = httpEntity.getContent();
+                httpEntity = httpResponse.getEntity();
+                //is = httpEntity.getContent();
             }
 
         } catch (UnsupportedEncodingException e) {
@@ -74,7 +76,12 @@ public class JSONParser {
         }
 
         try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(
+                String retSrc = EntityUtils.toString(httpEntity);
+                // parsing JSON
+                jObj = new JSONObject(retSrc); //Convert String to JSON Object
+                return jObj;
+
+            /*BufferedReader reader = new BufferedReader(new InputStreamReader(
                     is, "iso-8859-1"), 8);
             StringBuilder sb = new StringBuilder();
             String line = null;
@@ -82,7 +89,7 @@ public class JSONParser {
                 sb.append(line + "\n");
             }
             is.close();
-            json = sb.toString();
+            json = sb.toString();*/
         } catch (Exception e) {
             Log.e("Buffer Error", "Error converting result " + e.toString());
         }
