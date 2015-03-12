@@ -65,8 +65,8 @@ public class MainActivity extends ActionBarActivity {
 
         db = sqlh.getWritableDatabase();
         fillWishes();
-        LoadAllWishes loadAllWishes = new LoadAllWishes();
-        loadAllWishes.execute();
+        //LoadAllWishes loadAllWishes = new LoadAllWishes();
+        //loadAllWishes.execute();
 
         loadListView();
     }
